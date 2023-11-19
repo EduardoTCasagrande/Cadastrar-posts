@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/style.css">
+
+<header>
+    {{#if isAdmin}} <!-- Alteração aqui para corrigir a referência ao isAdmin -->
+        <a href="/cadastro">• Cadastrar Postagem</a>
+    {{/if}}
+
+    <a href="/admin">• Admin</a>
+    
+    {{#if isAdmin}}
+        <a href="/logout">Logout</a> 
+    {{/if}}
+</header>
+
+<h1>Lista de Postagens</h1>
+
+<!-- Para cada postagem faça isso: -->
+<div class="post-container">
+    {{#each posts}}
+        <div class="post">
+
+            <h1>{{dataValues.titulo}}</h1>
+            <p>{{dataValues.conteudo}}</p>
+            <p>id: {{dataValues.id}}</p>
+            
+            {{#if ../isAdmin}} <!-- Alteração aqui para corrigir a referência ao isAdmin -->
+                <a href="/deletar/{{dataValues.id}}"><button>Deletar</button></a>
+            {{/if}}
+        </div>
+    {{/each}}
+</div>
